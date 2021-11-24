@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<?php
+	include "./php/Connect2.php";
+?>
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Diary</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/home-style.css"/>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/mytable2.css"/>
+	<script type="text/javascript">
+		function test(){
+			if(flag){
+				var url = document.getElementById('change');
+				url.setAttribute('href', '#');
+			}
+			else{
+				var url = document.getElementById('change');
+				url.setAttribute('href', 'loading.html');
+			}
+		}
+		window.onload = test;
+	</script>
+</head>
+
+<body>
+  <div class="hm-page-container mx-auto">
+    <header class="hm-header text-center">
+      <h1 class="hm-title text-uppercase">
+		  个人日记
+	  </h1>
+      <p id="changeColor">
+		  <i id="judge">
+		  			  <?php
+		  	session_start();
+		  	if(isset($_SESSION['user_id']))
+		  	{
+		  		echo "当前用户：". $_SESSION['user_id'];
+		  				$flag1=true;
+		  				echo "<script>var flag=true</script>";
+		  	}
+		  	else
+		  	{
+		  		$_SESSION['user_id']=null;
+		  		echo "当前用户：". $_SESSION['user_id'];
+		  				$flag1=false;
+		  				echo "<script>var flag=false</script>";
+		  	}
+		  ?>			
+		  </i>
+	  </p>
+    </header>
+
+    <section class="hm-section">
+      <nav class="hm-nav">
+        <ul>
+			<li class="active">
+			  <a href="haha" id="change" ><span class="hm-nav-deco"></span>登录</a>
+			</li>
+          <li>
+          	<a href="php/logout.php" id="logout" style="color:#00aa00;"><span class="hm-nav-deco"></span>注销</a>
+          </li>
+		  <li>
+		    <a href="home.html"><span class="hm-nav-deco"></span>个人首页</a>
+		  </li>
+          <li>
+            <a href="album.html"><span class="hm-nav-deco"></span>个人相册</a>
+          </li>
+          <li>
+            <a href="personal_diary.html"><span class="hm-nav-deco"></span>个人日记</a>
+          </li>
+		  <li>
+		    <a href="personal_music.html"><span class="hm-nav-deco"></span>个人音乐</a>
+		  </li>
+		  <li>
+		    <a href="contact.html"><span class="hm-nav-deco"></span>联系我</a>
+		  </li>
+        </ul>
+      </nav>
+      <div class="hm-content-container">
+        <div class="hm-content">
+          <p>
+          当前状态 : 
+            <?php
+          	if($flag1){
+			
+          		echo "已经登录";
+				$author=$_SESSION['user_id'];
+				$sql="select * from blog where author='$author'";
+				$result=mysqli_query($con,$sql);
+				
+            ?>
+          </p>
+		  <p><a class="td-a" href="new_diary.html">写博客</a></p>
+			
+		  <p>
+			<table align="center">
+				<tr align="center">
+					<td>编号</td>
+					<td>标题</td>
+					<td>作者</td>
+					<td>操作</td>
+				</tr>
+				<?php
+				while($row = mysqli_fetch_array($result))
+				{
+				?>
+				<tr>
+					<td><?php echo $row['id'] ?></td>
+					<td><?php echo $row['title'] ?></td>
+					<td><?php echo $row['author'] ?></td>
+					<td>
+						
+						<a class="td-a" href="php/view_article.php?id=<?php echo $row['id'] ?>">查看</a>
+						<a class="td-a" href="php/del_article.php?id=<?php echo $row['id'] ?>">删除</a>
+						<a class="td-a" href="edit_diary.html?id=<?php echo $row['id'] ?>">修改</a>
+						<a class="td-a" href="new_diary.html">写博客</a>
+					</td>
+				</tr>
+				<?php
+				}
+					}else{
+						echo "请先登录";
+					}
+				?>
+			</table>
+
+		  </p>
+			<p></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Copyright 2021 BigFish.AllRightsReserved.</p>
+      <span></span>
+    </footer>
+  </div>
+</body>
+
+</html>

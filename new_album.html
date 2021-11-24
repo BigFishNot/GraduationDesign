@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>导入专辑</title>
+		<link rel="stylesheet" type="text/css" href="css/myform.css"/>
+	</head>
+	<body>
+		<div class="mid">
+				<form action="php/music/new_music.php" method="post" class="smart-green">
+					<label>
+						<h1 align="center">导入专辑</h1>
+					</label>
+				    <label><span>专辑名称 :</span>
+				        <input id="title" type="text" name="p_name"  />
+				        <div class="error-msg"></div>
+				    </label>
+					
+					<label><span>专辑图像链接 :</span>
+					    <input id="title" type="text" name="pic_url"  />
+					    <div class="error-msg"></div>
+					</label>
+					
+					<label><span>平台 :</span>
+						<select name="server">
+							<option name="" value="QQ音乐">QQ音乐</option>
+							<option name="" value="网易云">网易云</option>
+						</select>
+						<div class="error-msg"></div>
+					</label>
+					
+					<label><span>类型 :</span>
+						<select name="type">
+							<option name="" value="歌单">歌单</option>
+							<option name="" value="专辑">专辑</option>
+						</select>
+						<div class="error-msg"></div>
+					</label>
+					
+					<label><span>代号 :</span>
+					    <input id="title" type="text" name="p_id"  />
+					    <div class="error-msg"></div>
+					</label>
+					
+					<label><span>歌手 :</span>
+					    <input id="title" type="text" name="player"  />
+					    <div class="error-msg"></div>
+					</label>
+					<?php
+					
+						session_start();
+						$author=$_SESSION['user_id'];
+					?>
+					<label><span>作者 :</span>
+					    <input id="author" type="text" name="author" value="<?php echo $author ?> " disabled="disabled" />
+					    <div class="error-msg"></div>
+					</label>
+				  
+				  
+				    <label><span>提示 :</span>
+				        <textarea id="description" name="content">
+例如 : https://p1.music.126.net/eoSmqJdmKhNUnlGlhY9sEw==/109951166278013709.jpg
+孙燕姿	逆光		28520
+						</textarea>
+				        <div class="error-msg"></div> &nbsp; &nbsp; </label>
+				    <div class="success-msg"></div>
+				  <div style="float: left;"><input type="submit" class="button" value="确定" /></div>
+				  <div style="float: right;"><input type="button" class="button" onclick="window.location.href='/GraduationDesign/personal_music.html'" class="button" value="返回" /></div>
+				</form>
+		
+			</div>
+	</body>
+</html>

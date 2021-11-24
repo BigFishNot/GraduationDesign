@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<?php
+	include "./php/Connect2.php";?>
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/home-style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/myform.css"/>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		function test(){
+			if(flag){
+				var url = document.getElementById('change');
+				url.setAttribute('href', '#');
+			}
+			else{
+				var url = document.getElementById('change');
+				url.setAttribute('href', 'loading.html');
+			}
+		}
+		window.onload = test;
+	</script>
+	<script type="text/javascript">
+		var int = self.setInterval("nowtime()", 1000);
+		function nowtime() {
+ 
+			var date = new Date();
+			var dateString = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate() + "  " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+ 
+ 
+			document.getElementById("nowtime").value = dateString;
+	        }
+	</script>
+</head>
+
+<body>
+  <div class="hm-page-container mx-auto">
+    <header class="hm-header text-center">
+      <h1 class="hm-title text-uppercase">
+		  联系我
+	  </h1>
+      <p id="changeColor">
+		 <i id="judge">
+		 	<?php
+		 	session_start();
+		 	if(isset($_SESSION['user_id']))
+		 	{
+		 		echo "当前用户：". $_SESSION['user_id'];
+		 		$flag1=true;
+		 		echo "<script>var flag=true</script>";
+		 	}
+		 	else
+		 	{
+		 		$_SESSION['user_id']=null;
+		 		echo "当前用户：". $_SESSION['user_id'];
+		 		$flag1=false;
+		 		echo "<script>var flag=false</script>";
+		 	}
+		 ?>			
+		 </i> 
+	  </p>
+    </header>
+
+    <section class="hm-section">
+      <nav class="hm-nav">
+        <ul>
+			<li class="active">
+			  <a href="haha" id="change" ><span class="hm-nav-deco"></span>登录</a>
+			</li>
+          <li>
+          	<a href="php/logout.php" id="logout" style="color:#00aa00;"><span class="hm-nav-deco"></span>注销</a>
+          </li>
+		  <li>
+		    <a href="home.html"><span class="hm-nav-deco"></span>个人首页</a>
+		  </li>
+          <li>
+            <a href="album.html"><span class="hm-nav-deco"></span>个人相册</a>
+          </li>
+          <li>
+            <a href="personal_diary.html"><span class="hm-nav-deco"></span>个人日记</a>
+          </li>
+		  <li>
+		    <a href="personal_music.html"><span class="hm-nav-deco"></span>个人音乐</a>
+		  </li>
+		  <li>
+		    <a href="contact.html"><span class="hm-nav-deco"></span>联系我</a>
+		  </li>
+        </ul>
+      </nav>      
+	  <div class="hm-content-container">
+	          <div class="hm-content hm-content-2">
+	            <p>
+	  				当前状态 : 
+	              <?php
+	  				if($flag1){
+	  					echo "已经登录";
+	  			  ?>
+	            </p>
+				<div class="mid">
+					<form action="php/leave_messages.php" method="post" class="smart-green"  enctype="multipart/form-data">
+						<label>
+							<h1 align="center">留言</h1>
+						</label>
+						
+						
+						<?php
+							$author=$_SESSION['user_id'];
+						?>
+						<label><span>作者 :</span>
+							<select name="author">
+								<option name="" value="<?php echo $author ?>"><?php echo $author ?></option>
+								<option name="" value="匿名">匿名</option>
+							</select>
+							<div class="error-msg"></div>
+						</label>
+						
+						<label><span>当前时间 :</span>
+							<input id="nowtime" type="text" name="time" value="" disabled="disabled" />
+							<div class="error-msg"></div>
+						</label>
+						
+						<label><span>内容 :</span>
+						    <textarea id="description" name="content"></textarea>
+						    <div class="error-msg"></div> &nbsp; &nbsp; 
+						</label>
+					  
+						<div class="success-msg"></div>
+					  <div style="float: left;"><input type="submit" class="button" value="确定" /></div>
+					   <div style="float: right;"><input type="button" class="button" onclick="window.location.href='php/view_contact.php'" value="查看留言" /></div>
+					</form>
+						
+				</div>
+				<p>
+				<?php
+				}else{
+					echo "请先登录";
+				}
+				?>
+	  		  </p>
+	        </div>
+	    </div>
+    </section>
+
+    <footer>
+      <p>Copyright 2021 BigFish.AllRightsReserved.</p>
+      <span></span>
+    </footer>
+  </div>
+</body>
+
+</html>

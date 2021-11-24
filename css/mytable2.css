@@ -1,0 +1,38 @@
+table {
+	width: 90%;
+	background: #ccc;
+	margin: 10px auto;
+	border-collapse: collapse;
+}				
+th,td {
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	
+	border: 1px solid #e7e7e7;
+}		
+th {
+	background: #eee;
+	font-weight: normal;
+}		
+tr {
+	background: #fff;
+}		
+tr:hover {
+	background: #83d4ff;
+}		
+td a {
+	color: #06f;
+	text-decoration: none;
+}		
+td a:hover {
+	color: #06f;
+	text-decoration: underline;
+}
+.td-a{
+	text-decoration: none;
+}
+.td-a:link{color: blue}
+.td-a:visited{color: #ff0000}
+.td-a:hover{color: pink}
+.td-a:active{color: #DC3545}

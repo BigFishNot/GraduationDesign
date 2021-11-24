@@ -1,0 +1,199 @@
+body {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  overflow-x: hidden;
+  background-color: #f3f3f3;
+  color: #666768;
+}
+
+
+
+#changeColor{
+		color:rgb(0, 156, 255);
+		transition: 0.5s;
+		animation:change 10s linear 0s infinite;
+	}
+	@keyframes change{
+		0% {
+			color:#0000FF;
+		}
+		25% {
+			color:#ff0000;
+		}
+		50% {
+			color:#00ff00;
+		}
+		75% {
+			color: #ffaa00;
+		}
+		100% {
+			color:#0000FF;
+		}
+	}
+
+a {
+  transition: all 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+p {
+  line-height: 1.8;
+}
+
+
+/**/
+.hm-secondary-color {
+  color: #0099CC;
+}
+
+
+.hm-page-container {
+  max-width: 800px;
+  width: 100%;  
+}
+
+.hm-section {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.hm-content-container {      
+  border-radius: 20px;
+  background-color: white;
+}
+
+.hm-nav {
+  position: absolute;
+  right: -160px;
+  top: 45px;
+}
+
+.hm-nav > ul > li {
+  list-style: none;
+}
+
+.hm-nav > ul > li > a {
+  display: block;
+  padding: 12px 15px;
+  color: #999A9B;
+}
+
+.hm-nav > ul > li.active > a,
+.hm-nav > ul > li > a:hover,
+.hm-nav > ul > li > a:focus {
+  color: #0299CC;
+}
+
+.hm-nav-deco {
+  display: inline-block;
+  width: 20px;
+  height: 8px;
+  background-color: #999A9B;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.hm-nav > ul > li.active > a > .hm-nav-deco,
+.hm-nav > ul > li:hover > a > .hm-nav-deco
+ {
+  background-color: #0299CC;
+}
+
+.hm-content {  
+  padding: 50px;
+}
+
+.hm-header {
+  padding: 60px 15px;
+}
+
+.hm-title {
+  font-size: 2rem;
+  color: #626364;
+}
+
+.hm-page-title {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  color: #656667;
+}
+
+.hm-img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;  
+}
+
+footer {
+	text-align: center;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 50px;
+  color: #9A9B9C;
+}
+
+.hm-footer-link {
+  color: #9A9B9C;
+}
+
+.hm-contact-form {
+	max-width: 380px;
+}
+
+.form-group {
+	margin-bottom: 35px;
+}
+
+.btn {
+	font-size: 1.1rem;
+	padding: 10px 35px;
+	border: none;
+}
+
+.btn-primary {
+	background-color: #9999CC;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+	background-color: #9a9afc;
+}
+
+.hm-small {
+	font-size: 90%;
+}
+
+@media (max-width: 945px) {
+  .hm-nav {
+    position: static;
+  }
+
+  .hm-page-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+	.hm-gallery-item {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+@media (max-width: 480px) {
+  footer {
+    display: block;
+  }
+
+  footer span {
+    display: block;
+    padding: 15px;
+  }
+}
+

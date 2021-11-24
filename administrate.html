@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<?php
+	include "./php/Connect2.php";
+?>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>专属后台管理</title>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<link rel="icon" type="image/x-icon" href="./images/Live Messenger green.ico"/>
+		<link rel="stylesheet" type="text/css" href="css/mytable2.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/home-style.css"/>
+	</head>
+	<body>
+		<div class="hm-page-container mx-auto">
+		    <header class="hm-header text-center">
+		      <h1 class="hm-title text-uppercase">
+				  后台管理
+			  </h1>
+		    </header>
+		
+		    <section class="hm-section">
+			  <div class="hm-content-container">
+			          <div class="hm-content hm-content-2">
+						<div>
+							<table align="center">
+								<tr align="center">
+									<td>用户名</td>
+									<td>密码</td>
+									<td>E-mail</td>
+									<td>电话</td>
+									<td>举报</td>
+									<td>操作</td>
+								</tr>
+								<?php
+									$sql="select * from user";
+									$result=mysqli_query($con,$sql);
+									$alert="无举报";
+									while($row = mysqli_fetch_array($result))
+									{
+										if($row['alert']==1){
+											$alert="已被举报";
+										}else{
+											$alert="无举报";
+										}
+										if($row['name']!="admin"){
+								?>
+								<tr>
+									<td><?=$row['name'] ?></td>
+									<td><?=$row['psd'] ?></td>
+									<td><?=$row['email'] ?></td>
+									<td><?=$row['tel'] ?></td>
+									<td><?=$alert ?></td>
+									<td><a href="php/view_contact2.php?name=<?=$row['name'] ?>">查看留言</a><br>
+									<?php
+										if($row['authority']==3){
+									?>
+											<strong>已封号</strong>
+									<?php
+										}else{
+									?>
+											<a href="php/kill_user.php?name=<?=$row['name'] ?>">封号</a></td>
+									<?php
+										}
+									}
+									?>
+									
+								</tr>
+								<?php
+									}
+								?>
+							</table>
+						</div>					
+			        </div>
+					<button onclick="window.location.href='home.html'">返回</button>
+			    </div>
+		    </section>
+		
+		    <footer>
+		      <p>Copyright 2021 BigFish.AllRightsReserved.</p>
+		      <span></span>
+		    </footer>
+		  </div>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<?php
+	include "./php/Connect2.php";
+?>
+<head>
+  <meta charset="UTF-8" />
+  <title>Home</title>
+	<link rel="icon" type="image/x-icon" href="./images/home.ico"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/home-style.css"/>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		function test(){
+			if(flag){
+				var url = document.getElementById('change');
+				url.setAttribute('href', '#');
+			}
+			else{
+				var url = document.getElementById('change');
+				url.setAttribute('href', 'loading.html');
+			}
+		}
+		window.onload = test;
+	</script>
+</head>
+
+<body>
+  <div class="hm-page-container mx-auto">
+    <header class="hm-header text-center">
+      <h1 class="hm-title text-uppercase">
+		  个人博客网站
+	  </h1>
+      <p id="changeColor">
+		  <i id="judge">
+			  <?php
+		  	session_start();
+		  	if(isset($_SESSION['user_id']))
+		  	{
+		  		echo "当前用户：". $_SESSION['user_id'];
+				define("FLAG1","true");
+				echo "<script>var flag=true</script>";
+		  	}
+		  	else
+		  	{
+		  		$_SESSION['user_id']=null;
+		  		echo "当前用户：". $_SESSION['user_id'];
+				define("FLAG1","false");
+				echo "<script>var flag=false</script>";
+		  	}
+		  ?>			
+		  </i>
+	  </p>
+    </header>
+
+    <section class="hm-section">
+      <nav class="hm-nav">
+        <ul>
+			<li class="active">
+			  <a href="empty" id="change" ><span class="hm-nav-deco"></span>登录</a>
+			</li>
+          <li>
+          	<a href="php/logout.php" id="logout" style="color:#00aa00;"><span class="hm-nav-deco"></span>注销</a>
+          </li>
+		  <li>
+		    <a href="home.html"><span class="hm-nav-deco"></span>个人首页</a>
+		  </li>
+          <li>
+            <a href="album.html"><span class="hm-nav-deco"></span>个人相册</a>
+          </li>
+          <li>
+            <a href="personal_diary.html"><span class="hm-nav-deco"></span>个人日记</a>
+          </li>
+		  <li>
+		    <a href="personal_music.html"><span class="hm-nav-deco"></span>个人音乐</a>
+		  </li>
+		  <li>
+		    <a href="contact.html"><span class="hm-nav-deco"></span>联系我</a>
+		  </li>
+		  <?php
+			if($_SESSION['user_id']=="admin"){
+		  ?>
+		   <li>
+			  <a href="administrate.html"><span style="color: gold;" class="hm-nav-deco"></span>管理</a>
+		   </li>
+		  <?php
+			}
+		  ?>
+        </ul>
+      </nav>
+      <div class="hm-content-container">
+        <figure class="mb-0">
+          <img src="images/img-home.png" alt="SOCIAL" class="img-fluid hm-img" />
+        </figure>
+        <div class="hm-content">
+          <h2 class="hm-page-title">基本信息</h2>
+          <p class="mb-4">
+            <?php
+				$sql="select * from information";
+				$result=mysqli_query($con,$sql);
+				if(FLAG1=="true"){
+					
+					while($row = mysqli_fetch_array($result))
+					{
+					    echo $row['str'];
+					    echo "<br><br>";
+					}
+				}else{
+					echo "请先登录";
+				}
+				
+			?>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Copyright 2021 BigFish.AllRightsReserved.</p>
+      <span></span>
+    </footer>
+  </div>
+</body>
+
+</html>
