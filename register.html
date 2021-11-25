@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>register</title>
+	 <link rel="stylesheet" type="text/css" href="css/register.css"/>
+	 <script type="text/javascript" src="js/jquery.min.js"></script>
+	 <script type="text/javascript" src="js/script.js"></script>
+ </head>
+ 
+ <body>
+     <div id="loginDiv">
+         <form action="php/RegisterUser.php" method="post">
+             <h1>注册</h1>
+			 <p>用户姓名:<input type="text" class="register" id="regname" name="register_name" placeholder="输入用户名" onblur="checkname()"><label id="name_trip"></label></p>
+			 
+			<p>用户密码:<input type="password" class="register" id="regpsd1" name="register_psd1" placeholder="输入密码" onblur="checkpsd1()"><label id="password_trip"></label></p>
+			 
+			<p>确认密码:<input type="password" class="register" id="regpsd2" name="register_psd2" placeholder="再次输入密码" onblur="checkpsd2()"><label id="surePassword_trip"></label></p>
+			
+			<p>输入邮箱:<input type="email" class="register" id="regmail" name="register_email" placeholder="输入邮箱" onblur="checkemail()"><label id="password_trip"></label></p>
+			 
+			<p>输入手机:<input type="tel" class="register" id="regtel" name="register_tel" placeholder="输入手机号" onblur="checktel()"><label id="surePassword_trip"></label></p>
+             
+			 <br>
+             <p style="text-align: center;">
+                 <input type="submit" class="button" value="提交">
+                 <input type="reset" class="button" value="重置">
+             </p>
+         </form>
+     </div>
+ 
+ </body>
+ </html>

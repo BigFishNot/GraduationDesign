@@ -11,8 +11,21 @@
 		<link rel="stylesheet" type="text/css" href="css/mytable2.css" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/home-style.css"/>
+		<style type="text/css">
+			#father{
+				  background-image:url(images/colorful.png);
+				   background-repeat:no-repeat;
+				   background-position:top;
+				   background-attachment:fixed;
+			}
+			footer p{
+				
+				  	color: black;
+			}
+		</style>
 	</head>
 	<body>
+	<div id="father">
 		<div class="hm-page-container mx-auto">
 		    <header class="hm-header text-center">
 		      <h1 class="hm-title text-uppercase">
@@ -24,7 +37,8 @@
 			  <div class="hm-content-container">
 			          <div class="hm-content hm-content-2">
 						<div>
-							<table align="center">
+					
+							<table align="center" style="width: 700px;">
 								<tr align="center">
 									<td>用户名</td>
 									<td>密码</td>
@@ -39,8 +53,9 @@
 									$alert="无举报";
 									while($row = mysqli_fetch_array($result))
 									{
+										$name=$row['name'];
 										if($row['alert']==1){
-											$alert="已被举报";
+											$alert="已被举报"."<a href='php/kill_alert.php?name=$name '>清除举报</a>";
 										}else{
 											$alert="无举报";
 										}
@@ -56,7 +71,8 @@
 									<?php
 										if($row['authority']==3){
 									?>
-											<strong>已封号</strong>
+											<strong>已封号</strong><br>
+											<a href="php/save_user.php?name=<?=$row['name'] ?>" >解封</a>
 									<?php
 										}else{
 									?>
@@ -82,5 +98,6 @@
 		      <span></span>
 		    </footer>
 		  </div>
+		</div>
 	</body>
 </html>

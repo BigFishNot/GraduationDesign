@@ -1,87 +1,26 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+ 
 <head>
-<meta charset="utf-8">
-<title>登录---个人博客网站</title>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<style type="text/css">
-	@import url("css/index_style.css");
-</style>
-<link rel="stylesheet" href="./font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css">
+    <meta charset="UTF-8">
+    <title>login</title>
+	<link rel="stylesheet" type="text/css" href="css/login.css"/>
 </head>
+ 
 <body>
-<div class="container" id="container">
-    <div class="form-container sign-up-container">
-         <form method="post" action="php/RegisterUser.php">
-            <h1>注 册</h1>
-            <div class="social-container">
-                <a href="###" class="social">
-                    <i class="fa fa-wechat">
-                    </i>
-                </a>
-                <a href="###" class="social">
-                    <i class="fa fa-weibo"></i>
-                </a>
-                <a href="###" class="social">
-                    <i class="fa fa-qq"></i>
-                </a>
+    <div id="loginDiv">
+        <form action="php/ConnectDB.php" method="post" id="form">
+            <h1 style="text-align: center;color: aliceblue;">登录</h1>
+            <p>用户名：<input id="userNname" name="name" type="text"><label id="name_trip"></label></p>
+ 
+            <p>密&nbsp;&nbsp;码：  <input id="password" name="psd" type="password"><label id="password_trip"></label></p>
+ 
+            <div style="text-align: center;margin-top: 30px;">
+                <input type="submit" class="button" value="登录">
+                <input type="button" class="button" onclick="window.location.href='register.html'" value="注册">
             </div>
-            <span>选择以上方式登录或者使用您的账号</span>
-           <input type="text" class="register" id="regname" name="register_name" placeholder="输入用户名" onblur="checkname()">
-			 <input type="password" class="register" id="regpsd1" name="register_psd1" placeholder="输入密码" onblur="checkpsd1()">
-			<input type="password" class="register" id="regpsd2" name="register_psd2" placeholder="再次输入密码" onblur="checkpsd2()">
-             <input type="email" class="register" id="regmail" name="register_email" placeholder="输入邮箱" onblur="checkemail()">
-           <input type="tel" class="register" id="regtel" name="register_tel" placeholder="输入手机号" onblur="checktel()">
-            <button type="submit">注册</button>
-        
-    </iuput></form></div>
-    <div class="form-container sign-in-container">
-        <form action="php/ConnectDB.php" method="post">
-            <h1>登 录</h1>
-            <div class="social-container">
-                <a href="###" class="social">
-                    <i class="fa fa-wechat">
-                    </i>
-                </a>
-                <a href="###" class="social">
-                    <i class="fa fa-weibo"></i>
-                </a>
-                <a href="###" class="social">
-                    <i class="fa fa-qq"></i>
-                </a>
-            </div>
-            <span>选择以上方式登录或者使用您的账号</span>
-            <input type="text" class="username" name="name" placeholder="输入用户名" >
-            <input type="password" class="password" name="psd" placeholder="输入密码">
-			
-            <a href="###">忘记密码？</a>
-            <button type="submit">登录</button>
         </form>
     </div>
-    <div class="overlay-container">
-        <div class="overlay">
-            <div class="overlay-panel overlay-left">
-                <h1>已有账号？</h1>
-                <p>请登录您的帐号。</p>
-                <button class="ghost" id="signIn" type="button">登录</button>
-            </div>
-            <div class="overlay-panel overlay-right">
-                <h1>没有账号？</h1>
-                <p>欢迎注册帐号，加入我们。</p>
-                <button class="ghost" id="signUp" type="button">注册</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-	const signUpButton = document.getElementById("signUp");
-	const signInButton = document.getElementById("signIn");
-	const container = document.getElementById("container");
-
-	signUpButton.addEventListener("click", () => container.classList.add("right-panel-active"));
-
-	signInButton.addEventListener("click", () => container.classList.remove("right-panel-active"));
-</script>
+ 
 </body>
 </html>

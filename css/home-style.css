@@ -6,8 +6,9 @@ body {
   background-color: #f3f3f3;
   color: #666768;
 }
-
-
+html{
+	  background-image: url(../images/colorful.png);
+}
 
 #changeColor{
 		color:rgb(0, 156, 255);
@@ -194,6 +195,9 @@ footer {
   footer span {
     display: block;
     padding: 15px;
+  }
+  footer p{
+	  	color: black;
   }
 }
 
