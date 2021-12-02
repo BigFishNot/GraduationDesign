@@ -6,9 +6,7 @@ body {
   background-color: #f3f3f3;
   color: #666768;
 }
-html{
-	  background-image: url(../images/colorful.png);
-}
+
 
 #changeColor{
 		color:rgb(0, 156, 255);
@@ -42,11 +40,6 @@ a:focus {
   text-decoration: none;
 }
 
-p {
-  line-height: 1.8;
-}
-
-
 /**/
 .hm-secondary-color {
   color: #0099CC;
@@ -54,12 +47,12 @@ p {
 
 
 .hm-page-container {
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;  
 }
 
 .hm-section {
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   position: relative;
 }
 
@@ -68,49 +61,12 @@ p {
   background-color: white;
 }
 
-.hm-nav {
-  position: absolute;
-  right: -160px;
-  top: 45px;
-}
-
-.hm-nav > ul > li {
-  list-style: none;
-}
-
-.hm-nav > ul > li > a {
-  display: block;
-  padding: 12px 15px;
-  color: #999A9B;
-}
-
-.hm-nav > ul > li.active > a,
-.hm-nav > ul > li > a:hover,
-.hm-nav > ul > li > a:focus {
-  color: #0299CC;
-}
-
-.hm-nav-deco {
-  display: inline-block;
-  width: 20px;
-  height: 8px;
-  background-color: #999A9B;
-  vertical-align: middle;
-  margin-right: 20px;
-}
-
-.hm-nav > ul > li.active > a > .hm-nav-deco,
-.hm-nav > ul > li:hover > a > .hm-nav-deco
- {
-  background-color: #0299CC;
-}
-
 .hm-content {  
   padding: 50px;
 }
 
 .hm-header {
-  padding: 60px 15px;
+  padding: 30px 15px;
 }
 
 .hm-title {
@@ -130,11 +86,11 @@ p {
 }
 
 footer {
-	text-align: center;
+text-align: center;
   font-size: 1rem;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
   color: #9A9B9C;
 }
 
@@ -169,35 +125,17 @@ footer {
 	font-size: 90%;
 }
 
-@media (max-width: 945px) {
-  .hm-nav {
-    position: static;
-  }
+#footer {
+	height: 40px;
+	line-height: 40px;
+	position: fixed;
+	bottom: 15px;
+	width: 100%;
+	text-align: center;
+	background: #333;
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
+	letter-spacing: 1px;
 
-  .hm-page-container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
 }
-
-@media (max-width: 575px) {
-	.hm-gallery-item {
-		max-width: 100%;
-		height: auto;
-	}
-}
-
-@media (max-width: 480px) {
-  footer {
-    display: block;
-  }
-
-  footer span {
-    display: block;
-    padding: 15px;
-  }
-  footer p{
-	  	color: black;
-  }
-}
-

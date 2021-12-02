@@ -31,59 +31,84 @@
 <body>
   <div class="hm-page-container mx-auto">
     <header class="hm-header text-center">
-      <h1 class="hm-title text-uppercase">
-		  个人音乐
-	  </h1>
       <p id="changeColor">
-		  <i id="judge">
-		  	<?php
-		  	session_start();
-		  	if(isset($_SESSION['user_id']))
-		  	{
-		  		echo "当前用户：". $_SESSION['user_id'];
-		  				$flag1=true;
-		  				echo "<script>var flag=true</script>";
-		  	}
-		  	else
-		  	{
-		  		$_SESSION['user_id']=null;
-		  		echo "当前用户：". $_SESSION['user_id'];
-		  				$flag1=false;
-		  				echo "<script>var flag=false</script>";
-		  	}
-		  ?>			
-		  </i>
-	  </p>
+    	  <i id="judge">
+    		  <?php
+    	  	session_start();
+    	  	if(isset($_SESSION['user_id']))
+    	  	{
+    			$flag1=true;	
+    			echo "<script>var flag=true</script>";
+    	  	}
+    	  	else
+    	  	{
+    	  		$_SESSION['user_id']=null;
+    			$flag1=false;
+    			echo "<script>var flag=false</script>";
+    	  	}
+    	  ?>			
+    	  </i>
+      </p>
     </header>
-
+    
     <section class="hm-section">
-      <nav class="hm-nav">
-        <ul>
-			<li class="active">
-			  <a href="haha" id="change" ><span class="hm-nav-deco"></span>登录</a>
-			</li>
-          <li>
-          	<a href="php/logout.php" id="logout" style="color:#00aa00;"><span class="hm-nav-deco"></span>注销</a>
-          </li>
-		  <li>
-		    <a href="home.html"><span class="hm-nav-deco"></span>个人首页</a>
-		  </li>
-          <li>
-            <a href="album.html"><span class="hm-nav-deco"></span>个人相册</a>
-          </li>
-          <li>
-            <a href="personal_diary.html"><span class="hm-nav-deco"></span>个人日记</a>
-          </li>
-		  <li>
-		    <a href="personal_music.html"><span class="hm-nav-deco"></span>个人音乐</a>
-		  </li>
-		  <li>
-		    <a href="contact.html"><span class="hm-nav-deco"></span>联系我</a>
-		  </li>
-        </ul>
-      </nav>      
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      	<div class="container">
+      	<a id="changeColor" class="navbar-brand" href="#"><?php
+        	if(isset($_SESSION['user_id']))
+        	{
+        		echo "当前用户：". $_SESSION['user_id'];
+      		define("FLAG1","true");
+      		echo "<script>var flag=true</script>";
+        	}
+        	else
+        	{
+        		$_SESSION['user_id']=null;
+        		echo "当前用户：". $_SESSION['user_id'];
+      		define("FLAG1","false");
+      		echo "<script>var flag=false</script>";
+        	}
+        ?>-----欢迎登录个人博客网站hello		
+        </a>
+      	<ul class="navbar-nav">
+      		<li class="nav-item">
+      			<a class="nav-link" href="empty" id="change" >登录</a>
+      		</li>
+      		<li class="">
+      			<a class="nav-link" href="php/logout.php" id="logout" style="color:#00aa00;">注销</a>
+      		</li>
+      		<li class="">
+      			<a class="nav-link" href="home.html">个人首页</a>
+      		</li>
+      		<li class="">
+      			<a class="nav-link" href="album.html">个人相册</a>
+      		</li>
+      		<li class="">
+      			<a class="nav-link" href="personal_diary.html">个人日记</a>
+      		</li>
+      		<li class="">
+      			<a class="nav-link" href="personal_music.html">个人音乐</a>
+      		</li>
+      		<li class="">
+      			<a class="nav-link" href="contact.html">查看留言</a>
+      		</li>
+      		<?php
+              	if($_SESSION['user_id']=="admin"){
+                ?>
+      		<li class="-">
+      			<a class="nav-link" href="administrate.html">管理</a>
+      		</li>
+      		<?php
+              	}
+                ?>
+      	</ul>
+      	</div>
+      </nav> 
 	 <div class="hm-content-container">
 	   <div class="hm-content">
+	   <h1 align="center">
+	   		  个人音乐 	
+	   </h1>
 	     <p>
 	     当前状态 : 
 	       <?php
@@ -136,27 +161,11 @@
 	   </div>
 	 </div>
     </section>
-
-    <footer>
-      <p>Copyright 2021 BigFish.AllRightsReserved.</p>
-      <span></span>
-    </footer>
+	<center>
+		<font color='gray' size='4' >
+			Copyright 2021 BigFish.AllRightsReserved.	
+		</font>
+	</center>
   </div>
 </body>
- <script>
- const ap = new APlayer({
-    container: document.getElementById('player1'),
-    fixed: true,
-    audio: [{
-        name: 'name',
-		lrcType: 1,
-        artist: 'artist',
-        url: 'https://music.163.com/song/media/outer/url?id=454828887.mp3',
-        cover: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000002ehzTm0TxXC2.jpg',
-    }]
-});
-     
-        ap.init();
-    </script>
-
 </html>

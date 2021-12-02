@@ -35,8 +35,9 @@
 	    </div>
     </section>
 
-    <footer>
-      <p>Copyright 2021 BigFish.AllRightsReserved.</p>
-      <span></span>
-    </footer>
+	<center>
+		<font color='gray' size='4' >
+			Copyright 2021 BigFish.AllRightsReserved.	
+		</font>
+	</center>
   </div>

@@ -21,7 +21,6 @@
 		  我要听歌
 	  </h1>
     </header>
-
     <section class="hm-section">
 	  <div class="hm-content-container">
 	          <div class="hm-content hm-content-2">
@@ -39,8 +38,8 @@
 				</div>
 			
 				<?php 
-				
-				} ?>
+				} 
+				?>
 	        </div>
 			<button onclick="window.location.href='/GraduationDesign/personal_music.html'">返回</button>
 	    </div>

@@ -6,10 +6,10 @@
 	if(mysqli_query($con,$sql)){
 	
 ?>
-		<script>
-			alert("封号成功!");
-			window.location.href="/GraduationDesign/administrate.html";
-		</script>
+	<script>
+		alert("封号成功!");
+		window.location.href="/GraduationDesign/administrate.html";
+	</script>
 	
 	<?php
 		}else{
